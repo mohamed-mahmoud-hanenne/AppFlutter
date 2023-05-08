@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:my_flutter/home.dart';
 import 'package:my_flutter/navbar.dart';
 
 
@@ -16,14 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        drawer: Navebar(),
-        appBar: AppBar(
-          title: Text("Navbar"),
-          backgroundColor: Colors.purple,
-        ),
-        body: Center(child: Text("Menu")),
-      ),
+     home: Home(),
     );
 
   }
