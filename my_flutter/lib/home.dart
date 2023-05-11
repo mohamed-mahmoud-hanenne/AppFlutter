@@ -1,4 +1,7 @@
+// ignore_for_file: unnecessary_string_interpolations, avoid_print
+
 import 'dart:convert';
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -12,44 +15,26 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-var id;
-var title;
+// var id;
+// var title;
 
+// Future<void> getData() async{
 
-Future<void>  getData() async{
- print("mmm");
-    var url = Uri.parse('http://192.168.0.120:8000/quizzes/');
-   final  response = await http.get(url);
-    var results  = jsonDecode(response.body);
-   print("jjj");
-     if(response.statusCode == 200){
-      print("hh");
-       var results  = jsonDecode(response.body);
-       print("lll");
-       this.id = results['id'];
-       print(results['id']);
-     }
+//     Response? response ;
     
-    else{
-      print("erreur");
-    }
-   
-  }
+//   try {
+//      var url = Uri.parse('https://jsonplaceholder.typicode.com/todos/1');
+//      response = await http.get(url);
+    
+//   } catch (e) {
+//     print(e.toString());
+//     response = null;
+//   }
+ 
+//  print(response!.statusCode.toString());
+//  print(response.body);
 
-static const urlPrefix = 'http://192.168.0.120:8000/quizzes/';
-Future<void> makeGetRequest() async {
-  print('kfvk,fgk');
-  final url = Uri.parse('$urlPrefix');
-  print("jejjej");
-  get(url).then((response) {
-    print("kkkee");
-    print('Status code: ${response.statusCode}');
-    print('Body: ${response.body}');
-  }).catchError((error) {
-    print('Error: $error');
-  });
-}
-
+// }
 
 
   @override
@@ -58,53 +43,99 @@ Future<void> makeGetRequest() async {
   //   makeGetRequest();
   // }
 
+  final List<Widget> _screens = [
+    Center(
+      child:   Container(
+        alignment: Alignment.center,
+        width: 400,
+        height: 300,
+        color: Colors.amber,
+      
+      child: Text("Home", style: TextStyle(color: Colors.blue),),
+    ),
+    ),
+  
+
+    Center(
+      child:   Container(
+        alignment: Alignment.center,
+        width: 400,
+        height: 300,
+        color: Colors.amber,
+      
+      child: Text("Reception", style: TextStyle(color: Colors.blue),),
+    ),
+    ),
+
+      Center(
+      child:   Container(
+        alignment: Alignment.center,
+        width: 400,
+        height: 300,
+        color: Colors.amber,
+      
+      child: Text("Favorites", style: TextStyle(color: Colors.blue),),
+    ),
+    ),
+  ];
+
+  int _selc = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
       appBar: AppBar(
-        title: Text("Http"),
-      ),
-
-      body: Center(
-        child: FutureBuilder(
-          future: getData(),
-          builder: (context, snapshot){
-            if(snapshot.hasData){
-              return Container(
-                child: Text('id is $id'),
-              );
-            }
-            else{
-             return CircularProgressIndicator(
-              color: Colors.amber,
-              
-             );
-            }
-          }
-          ),
+        title: Text("pages"),
       ),
 
       // body: Center(
-        
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: [
-      //     ElevatedButton(
-      //   child: Text('get'),
-      //   onPressed: () {
-      //     getData();
-      //   },
-      //   ),
-      //   Container(
-      //     child: Text('id is $id'),
-      //   )
-      //     ],
-      //   ),
-    
+      //   child: FutureBuilder(
+      //     future: getData(),
+      //     builder: (context, snapshot){
+      //       if(snapshot.hasData){
+      //         return Container(
+      //           child: Text('id is $id'),
+      //         );
+      //       }
+      //       else{
+      //        return CircularProgressIndicator(
+      //         color: Colors.amber,
+              
+      //        );
+      //       }
+      //     }
+      //     ),
       // ),
 
-        
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.amber,
+        currentIndex: _selc,
+
+        onTap: (int index){
+          setState(() {
+            _selc = index;
+          });
+        },
+        items: [
+         BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home'
+         ),
+
+                 BottomNavigationBarItem(
+          icon: Icon(Icons.inbox),
+          label: 'Reception'
+         ),
+
+                 BottomNavigationBarItem(
+          icon: Icon(Icons.favorite),
+          label: 'Favorites'
+         ),
+        ],
+      ),
+
+        body: _screens[_selc],
     );
   }
 }
