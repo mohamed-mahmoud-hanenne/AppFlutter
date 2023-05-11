@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:my_flutter/ev.dart';
 import 'package:my_flutter/home.dart';
-import 'package:my_flutter/navbar.dart';
+
 
 
 void main() {
@@ -17,6 +18,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      routes: {
+        '/second': (context) => const MyEva(),
+      },
      home: Home(),
     );
 

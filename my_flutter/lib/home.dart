@@ -1,11 +1,8 @@
 // ignore_for_file: unnecessary_string_interpolations, avoid_print
 
-import 'dart:convert';
-import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -15,127 +12,95 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-// var id;
-// var title;
 
-// Future<void> getData() async{
-
-//     Response? response ;
-    
-//   try {
-//      var url = Uri.parse('https://jsonplaceholder.typicode.com/todos/1');
-//      response = await http.get(url);
-    
-//   } catch (e) {
-//     print(e.toString());
-//     response = null;
-//   }
- 
-//  print(response!.statusCode.toString());
-//  print(response.body);
-
-// }
-
-
-  @override
-  // void iniState() async{
-  //   super.initState();
-  //   makeGetRequest();
-  // }
-
-  final List<Widget> _screens = [
-    Center(
-      child:   Container(
-        alignment: Alignment.center,
-        width: 400,
-        height: 300,
-        color: Colors.amber,
-      
-      child: Text("Home", style: TextStyle(color: Colors.blue),),
-    ),
-    ),
-  
+final List<Widget> _prot= [
 
     Center(
-      child:   Container(
-        alignment: Alignment.center,
-        width: 400,
-        height: 300,
-        color: Colors.amber,
-      
-      child: Text("Reception", style: TextStyle(color: Colors.blue),),
-    ),
-    ),
+    child: Container(
+    alignment: Alignment.center,
+    child: CircleAvatar()
+   
+  ),
+  ),
 
       Center(
-      child:   Container(
-        alignment: Alignment.center,
-        width: 400,
-        height: 300,
-        color: Colors.amber,
-      
-      child: Text("Favorites", style: TextStyle(color: Colors.blue),),
-    ),
-    ),
-  ];
+    child: Container(
+    alignment: Alignment.center,
+    child: Text("About"),
+   
+  ),
+  ),
+
+      Center(
+    child: Container(
+    alignment: Alignment.center,
+    child: Text("Projects"),
+    
+  ),
+  ),
+
+      Center(
+    child: Container(
+    alignment: Alignment.center,
+    child: Text("Contact"),
+    color: Colors.black,
+  ),
+  ),
+];
 
   int _selc = 0;
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
-        title: Text("pages"),
+        title: Text('My Protfolio', style: TextStyle(color: Colors.black),),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
 
-      // body: Center(
-      //   child: FutureBuilder(
-      //     future: getData(),
-      //     builder: (context, snapshot){
-      //       if(snapshot.hasData){
-      //         return Container(
-      //           child: Text('id is $id'),
-      //         );
-      //       }
-      //       else{
-      //        return CircularProgressIndicator(
-      //         color: Colors.amber,
-              
-      //        );
-      //       }
-      //     }
-      //     ),
-      // ),
-
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.amber,
+     bottomNavigationBar: BottomNavigationBar(
+        
+        selectedItemColor: Colors.purple,
         currentIndex: _selc,
-
+        type: BottomNavigationBarType.shifting,
+         
         onTap: (int index){
           setState(() {
             _selc = index;
           });
         },
+        
         items: [
          BottomNavigationBarItem(
-          icon: Icon(Icons.home),
+          icon: Icon(Icons.home, color: Colors.blue,),
+          
           label: 'Home'
          ),
 
                  BottomNavigationBarItem(
-          icon: Icon(Icons.inbox),
-          label: 'Reception'
+          icon: Icon(Icons.question_mark,  color: Colors.blue,),
+          label: 'About'
          ),
 
                  BottomNavigationBarItem(
-          icon: Icon(Icons.favorite),
-          label: 'Favorites'
+          icon: Icon(Icons.production_quantity_limits_sharp,  color: Colors.blue,),
+          label: 'Projects'
          ),
+
+                 BottomNavigationBarItem(
+          icon: Icon(Icons.phone,  color: Colors.blue,),
+          label: 'Contact'
+         ),
+
+   
         ],
       ),
+       
+       body: _prot[_selc],
 
-        body: _screens[_selc],
     );
   }
 }
