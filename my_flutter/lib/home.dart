@@ -18,7 +18,14 @@ final List<Widget> _prot= [
     Center(
     child: Container(
     alignment: Alignment.center,
-    child: CircleAvatar()
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        CircleAvatar(),
+        Text('I am Mohamed mahmoud', style: TextStyle(),),
+        
+      ],
+    )
    
   ),
   ),
@@ -43,7 +50,7 @@ final List<Widget> _prot= [
     child: Container(
     alignment: Alignment.center,
     child: Text("Contact"),
-    color: Colors.black,
+   
   ),
   ),
 ];
