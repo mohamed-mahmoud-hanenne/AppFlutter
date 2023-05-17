@@ -1,7 +1,6 @@
 // ignore_for_file: unnecessary_string_interpolations, avoid_print
-
-
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 
 class Home extends StatefulWidget {
@@ -12,6 +11,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  static const urlquizz = 'http://192.168.0.120:8000/quizzes/';
+
+  Future<void> getquizz() async{
+    final url = Uri.parse('$urlquizz');
+
+   final response = await http.get(url);
+   print(response.statusCode);
+  }
 
 final List<Widget> _prot= [
 
