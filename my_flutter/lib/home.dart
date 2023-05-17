@@ -12,14 +12,14 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  static const urlquizz = 'http://192.168.0.120:8000/quizzes/';
+  // static const urlquizz = 'http://192.168.0.120:8000/quizzes/';
 
-  Future<void> getquizz() async{
-    final url = Uri.parse('$urlquizz');
+  // Future<void> getquizz() async{
+  //   final url = Uri.parse('$urlquizz');
 
-   final response = await http.get(url);
-   print(response.statusCode);
-  }
+  //  final response = await http.get(url);
+  //  print(response.statusCode);
+  // }
 
 final List<Widget> _prot= [
 

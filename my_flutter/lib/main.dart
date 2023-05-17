@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter/ev.dart';
 import 'package:my_flutter/home.dart';
+import 'package:my_flutter/http.dart';
 
 
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/second': (context) => const MyEva(),
       },
-     home: Home(),
+     home: GetData(),
     );
 
   }
