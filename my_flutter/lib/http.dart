@@ -15,16 +15,17 @@ class GetData extends StatefulWidget {
 class _GetDataState extends State<GetData> {
 
   Future<void> getData() async{
-    print("mm");
+   
+   
+     final url = Uri.parse("https://jsonplaceholder.typicode.com/todos");
+     final response = await http.get(url);
     
-     final response = await http.get(Uri.parse("https://jsonplaceholder.typicode.com/todos"));
-    
-     print(response.statusCode);
-     print(response.body);
+     final responsebody = jsonDecode(response.body);
+     return responsebody;
   }
 
-  static const urlquiz = 'http://192.168.1.130:8000/courses/quizzes';
-Future<void> makeGetRequest() async {
+  static const urlquiz = 'https://jsonplaceholder.typicode.com/todos/';
+  Future<void> makeGetRequest() async {
   print('Hello');
   final url = Uri.parse('$urlquiz');
   print("in");
@@ -38,11 +39,11 @@ Future<void> makeGetRequest() async {
 }
 
   @override
-  void initState(){
-    super.initState();
-    makeGetRequest();
+  // void initState(){
+  //   super.initState();
+  //   getData();
     
-  }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -50,16 +51,15 @@ Future<void> makeGetRequest() async {
 
       appBar: AppBar(title: Text('Http')),
       body: FutureBuilder(
-        future: makeGetRequest(),
+        future: getData(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-         if(snapshot.hasData){
+          
            return Container(
             child: Text(
               snapshot.data[0]['title']
             ),
           );
-         }
-         else return CircularProgressIndicator();
+        
          
         })
         );
