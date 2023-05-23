@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/second': (context) => const MyEva(),
       },
-     home: GetData(),
+     home: Home()
     );
 
   }

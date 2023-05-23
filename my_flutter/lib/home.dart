@@ -12,15 +12,20 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  // static const urlquizz = 'http://192.168.0.120:8000/quizzes/';
+  static const urlquizz = 'https://jsonplaceholder.typicode.com/users';
 
-  // Future<void> getquizz() async{
-  //   final url = Uri.parse('$urlquizz');
+  Future<void> getselect() async{
+    final url = Uri.parse('$urlquizz');
 
-  //  final response = await http.get(url);
-  //  print(response.statusCode);
-  // }
-
+   final response = await http.get(url);
+   print(response.statusCode);
+   print(response.body);
+  }
+ @override
+ void initState() {
+  super.initState();
+  getselect();
+ }
 final List<Widget> _prot= [
 
     Center(
